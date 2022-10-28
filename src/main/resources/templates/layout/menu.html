@@ -1,0 +1,35 @@
+
+<div th:fragment="menu">
+	<ul class="nav">
+		<li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a>
+		</li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/protegido}">Protegido
+				1</a></li>
+		<li class="nav-item"><a class="nav-link"
+			th:href="@{/protegido/protegido-2}">Protegido 2</a></li>
+		<li class="nav-item"><a class="nav-link"
+			th:href="@{/restringido}">Restringido</a></li>
+		<li class="nav-item"><a class="nav-link"
+			th:href="@{/restringido/restringido-2}">Restringido 2</a></li>
+		<li class="nav-item"><a class="nav-link" th:href="@{/liberada}">Liberada</a>
+		</li>
+		<li class="nav-item"><a class="nav-link"
+			th:href="@{/liberada/liberada-2}">Liberada 2</a>
+		</li>
+		<!--<li class="nav-item"><a class="nav-link"
+			th:href="@{/acceso/registro}">Registro</a>
+		</li>
+		<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"
+			href="javascript:void(0);" onclick="document.logout_form.submit();">Salir</a>
+		</li>-->
+	</ul>
+	<!--<div sec:authorize="isAuthenticated()">
+		Hola <span sec:authentication="name"></span> | Roles <span
+			sec:authentication="principal.authorities"></span>
+			
+		<form name="logout_form" th:action="@{/logout}" method="POST">
+			
+		</form>			
+			
+	</div>-->
+</div>
