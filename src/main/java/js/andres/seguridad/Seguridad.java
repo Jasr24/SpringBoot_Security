@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalMethodSecurity(prePostEnabled = true) //antes de un post.. aqui en esta clase realizamos la configuraciones principales
 public class Seguridad {
     
-    @Bean //Se deben de crear otros metodos () para que este funcione correctamente.
+    @Bean //Se deben de crear otros clase-metodos (***UsuarioLogin -> es un componente asi que lo afecta***) para que este funcione correctamente.
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
  		return authenticationConfiguration.getAuthenticationManager();
  	}
