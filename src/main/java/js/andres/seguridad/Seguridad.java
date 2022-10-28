@@ -50,11 +50,12 @@ public class Seguridad {
  		//se hacen las configuraciones generales
  		.anyRequest().authenticated()
  		
- 		//página de login
- 		.and().formLogin().permitAll()
+ 		//página de login //Esto permite que todos puedan vngresar a la vista para loguearse
+ 		//.and().formLogin().permitAll()  //Esto es la vista por defecto de Spring
+		.and().formLogin().loginPage("/acceso/login").permitAll() //"/acceso/login" donde esta la vista.. vista personalizada
  		
- 		//ruta de logout
- 		.and().logout().permitAll();
+ 		//ruta de logout //Esto permite que todos puedan ingresar a la vista para desloguearse
+ 		.and().logout().permitAll();  //cerrando cession
  		
  		return http.build();
  	}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://thymeleaf.org/extras/spring-security">  <!--sec se agrega para mostrar solo si se esta logueado-->
     <head>
         <meta charset="UTF-8"/>
         <link href="https://www.tamila.cl/assets/img/isotipo2.png" rel="icon"/>
@@ -15,6 +15,13 @@
                 </div>
                 <div class="card-body text-primary">
                     <div th:Replace="layout/menu :: menu"></div>
+
+                    <!--ESTA EN LA VISTA DE LAYOUT MENU... 
+                        se muestra solo si el usuario esta logueado
+                    <div sec:authorize="isAuthenticated()">Hola <span sec:authentication="name"></span>
+                        | Roles <span sec:authentication="principal.authorities"></span>
+                    </div> -->
+
                     <img th:src="@{/images/logo.png}" alt="logo de tamilla" style="width: 100px;"/>
                 </div>
             </div>
