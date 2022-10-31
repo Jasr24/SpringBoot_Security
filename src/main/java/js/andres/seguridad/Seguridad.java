@@ -1,5 +1,6 @@
 package js.andres.seguridad;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +17,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity //Con esta clase habilitamos todo el paquete de bateria para trabajar con spring security
 @EnableGlobalMethodSecurity(prePostEnabled = true) //antes de un post.. aqui en esta clase realizamos la configuraciones principales
 public class Seguridad {
+
+	@Autowired
+	private LoginPersonalizado loginPersonalizado;
     
     @Bean //Se deben de crear otros clase-metodos (***UsuarioLogin -> es un componente asi que lo afecta***) para que este funcione correctamente.
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
@@ -52,7 +56,8 @@ public class Seguridad {
  		
  		//página de login //Esto permite que todos puedan vngresar a la vista para loguearse
  		//.and().formLogin().permitAll()  //Esto es la vista por defecto de Spring
-		.and().formLogin().loginPage("/acceso/login").permitAll() //"/acceso/login" donde esta la vista.. vista personalizada
+		//.and().formLogin().loginPage("/acceso/login").permitAll() //"/acceso/login" donde esta la vista.. vista personalizada
+		.and().formLogin().successHandler(loginPersonalizado).loginPage("/acceso/login").permitAll()  //Aqwui le pasamos el login personalizado
  		
  		//ruta de logout //Esto permite que todos puedan ingresar a la vista para desloguearse
  		.and().logout().permitAll();  //cerrando cession

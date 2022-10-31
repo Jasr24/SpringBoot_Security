@@ -21,7 +21,11 @@
                     <div sec:authorize="isAuthenticated()">Hola <span sec:authentication="name"></span>
                         | Roles <span sec:authentication="principal.authorities"></span>
                     </div> -->
-
+                    <div th:if="${mensaje!=null}" th:class="'alert alert-'+${clase}+'  alert-dismissible fade show'">
+                        <span th:text="${mensaje}"> </span>
+                        <button th:if="${mensaje!=null}" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div> 
+                    
                     <img th:src="@{/images/logo.png}" alt="logo de tamilla" style="width: 100px;"/>
                 </div>
             </div>

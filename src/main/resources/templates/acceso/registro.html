@@ -11,7 +11,7 @@
         <div class="container">
             <div class="card border-primary mb-3">
                 <div class="card-header bg-primary text-white">
-                    <h1>Login</h1>
+                    <h1>Registro</h1>
                 </div>
                 <div class="card-body text-primary">
                     <div th:Replace="layout/menu :: menu"></div>
@@ -23,29 +23,39 @@
                         <button th:if="${mensaje!=null}" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div> 
 
-                    <form name="form" method="POST" th:action="@{/acceso/login}">
+                    <form name="form" method="POST" th:object="${usuario}" th:action="@{/acceso/registro}">
 
-                        <h3>Ingrese sus datos</h3>
+                        <h3>Ingrese sus datos para el Registro</h3>
+
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>                             
+                            <input type="text" class="form-control" th:field="*{nombre}" placeholder="Nombre" required="true" autofocus="true">
+                        </div>
                         
                         <div class="mb-3">
                             <label for="correo" class="form-label">E-Mail</label>                             
-                            <input type="text" class="form-control" name="username" id="username" placeholder="E-Mail" required="true" autofocus="true">
+                            <input type="text" class="form-control" th:field="*{correo}" placeholder="E-Mail" required="true" autofocus="true">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>  
+                            <input type="text" class="form-control" th:field="*{telefono}" placeholder="Telefono" required="true" autofocus="true">
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Contraseña</label>                             
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required="true" autofocus="true">
+                            <input type="password" class="form-control" th:field="*{password}" placeholder="Contraseña" required="true" autofocus="true">
                         </div>
 
                         <hr/>
 
                         <a href="javascript:void(0);" onclick="document.form.submit();" class="btn btn-primary">Enviar</a>
 
-                    </form>
+                    </form>    
                     <hr/>
                     <p>
-                        <a th:href="@{/acceso/registro}">No tienes aún?</a>
-                    </p>
+                        <a th:href="@{/acceso/login}">Ya tienes cuenta?</a>
+                    </p>                
                 </div>
             </div>
         </div>
